@@ -1,0 +1,10 @@
+.Display{
+    margin-left: 35px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 175px;
+    justify-content: center;
+    display: flex;
+    /* background:rgb(150, 148, 148); */
+}
+   
