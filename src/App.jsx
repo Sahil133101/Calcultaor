@@ -1,21 +1,31 @@
+import React, { useState } from "react";
+import Disp from "./Disp.jsx";
+import './App.css';
 
-import styles from "./App.module.css"
-import Display from './Components/Display.jsx';
-import ButtonContainer from "./Components/ButtonContainer.jsx";
+export default function App() {
+  const [result, setResult] = useState("");
 
+  const clickHandler = (value) => {
+    if (value === "=") {
+      try {
+        setResult(eval(result).toString());
+      } catch (error) {
+        setResult("Error");
+      }
+    } else if (value === "Clear") {
+      setResult("");
+    } 
+    else if(value === "->"){
+      setResult(result.slice(0,-1))
+    }
+    else {
+      setResult(result.concat(value));
+    }
+  };
 
-export default function App(){
-  return(
+  return (
     <>
-    <div className={styles.calculator}>
-      <Display></Display>
-      <ButtonContainer> </ButtonContainer>
-  
-      
-
-       
-      </div>
-      </>
-
+      <Disp result={result} clickHandler={clickHandler} />
+    </>
   );
 }

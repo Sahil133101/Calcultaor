@@ -1,16 +1,20 @@
-import React from "react";
-import "./ButtonContainer.modules.css";
-const ButtonContainerContainer = () => {
-  const ButtonName = ["C","()","%","/","7","8","9","*","4","5","6","-","1","2","3","+","0",".","="]
-    return <>
-    <div className="ButtonContainer">
-      {ButtonName.map((ButtonName =>(<button className= "Button" >{ButtonName}</button> )))}
-      {/* <button className= "Button" >C</button>  
-      <button className="Button" >()</button> 
-      <button className= "Button">%</button>
-      <button className= "Button"> /</button> */}
+import React from 'react';
+import './App.css';
+
+export default function Disp({ result, clickHandler }) {
+  return (
+    <div className="cal">
+      <div>
+        <input type="text" placeholder="0" value={result} readOnly />
       </div>
-    
-    </>
+
+      <div className="buttons-container">
+        {["9", "8", "7", "6", "5", "4", "3", "2", "1", "0", "(", ")", ".", "+", "-", "*", "/", "Clear", "->", "="].map((buttonValue) => (
+          <button key={buttonValue} onClick={() => clickHandler(buttonValue)}>
+            {buttonValue}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
 }
-export default ButtonContainerContainer;
